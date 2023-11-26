@@ -8,10 +8,10 @@ app.use(express.json())
 app.use(cors())
 
 app.get("/shorten", async (req, res) => {
+	const link = req.body.inputURL
+	const apiURL = "https://cleanuri.com/api/v1/shorten"
 	try {
-		const response = await axios.post("https://cleanuri.com/api/v1/shorten", {
-			url: req.body.url,
-		})
+		const response = await axios.post(apiURL, { url: link })
 		console.log(response.data.result_url)
 		res.json(response.data)
 	} catch (error) {
