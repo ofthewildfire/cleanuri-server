@@ -7,8 +7,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.post("/shorten", async (req, res) => {
+app.get("/", async (req, res) => {
 	const link = req.body.inputURL
+	console.log(req.body)
 	console.log(`This is the link`, link)
 	const apiURL = "https://cleanuri.com/api/v1/shorten"
 	try {
