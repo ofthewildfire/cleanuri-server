@@ -9,13 +9,14 @@ app.use(cors())
 
 app.post("/shorten", async (req, res) => {
 	const link = req.body.inputURL
+	console.log(`This is the link`, link)
 	const apiURL = "https://cleanuri.com/api/v1/shorten"
 	try {
 		const response = await axios.post(apiURL, { url: link })
-		console.log(response.data.result_url)
+		// console.log(response.data.result_url)
 		res.json(response.data)
 	} catch (error) {
-		console.error(error)
+		// console.error(error)
 		res.status(500).json({ error: "An error orcurred" })
 	}
 })
